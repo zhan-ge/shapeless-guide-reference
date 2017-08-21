@@ -1,0 +1,412 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>ADT 与泛型表示 · gitbook for force 2.0</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-git-author/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hypercomments-temp/hc.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="2-1.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../chapter-1/1-0.html">
+            
+                <a href="../chapter-1/1-0.html">
+            
+                    
+                        <b>1.2.</b>
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../chapter-1/1-1.html">
+            
+                <a href="../chapter-1/1-1.html">
+            
+                    
+                        <b>1.2.1.</b>
+                    
+                    什么是泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../chapter-1/1-2.html">
+            
+                <a href="../chapter-1/1-2.html">
+            
+                    
+                        <b>1.2.2.</b>
+                    
+                    关于本书
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../chapter-1/1-3.html">
+            
+                <a href="../chapter-1/1-3.html">
+            
+                    
+                        <b>1.2.3.</b>
+                    
+                    源代码和示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../chapter-1/1-4.html">
+            
+                <a href="../chapter-1/1-4.html">
+            
+                    
+                        <b>1.2.4.</b>
+                    
+                    致谢
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                        <b>1.3.</b>
+                    
+                    类型类推断
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.3.1" data-path="2-0.html">
+            
+                <a href="2-0.html">
+            
+                    
+                        <b>1.3.1.</b>
+                    
+                    ADT 与泛型表示
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="2-1.html">
+            
+                <a href="2-1.html">
+            
+                    
+                        <b>1.3.1.1.</b>
+                    
+                    简单回顾：代数数据类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >ADT 与泛型表示</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="adt-&#x4E0E;&#x6CDB;&#x578B;&#x8868;&#x793A;">ADT &#x4E0E;&#x6CDB;&#x578B;&#x8868;&#x793A;</h1>
+<p>&#x6CDB;&#x578B;&#x7F16;&#x7A0B;&#x80CC;&#x540E;&#x7684;&#x4E3B;&#x8981;&#x601D;&#x60F3;&#x662F;&#x901A;&#x8FC7;&#x7F16;&#x5199;&#x5C0F;&#x89C4;&#x6A21;&#x7684;&#x6CDB;&#x578B;&#x4EE3;&#x7801;&#x6765;&#x89E3;&#x51B3;&#x5927;&#x91CF;&#x7E41;&#x6742;&#x7C7B;&#x578B;&#x7684;&#x95EE;&#x9898;&#x3002;shapeless &#x4E3A;&#x6B64;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x7EC4;&#x5DE5;&#x5177;&#xFF1A;</p>
+<ul>
+<li>&#x4E00;&#x7EC4;&#x53EF;&#x4EE5;&#x7C7B;&#x578B;&#x7EA7;&#x522B;&#x88AB;&#x68C0;&#x67E5;&#x3001;&#x904D;&#x5386;&#x3001;&#x64CD;&#x4F5C;&#x7684;&#x6CDB;&#x578B;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF1B;</li>
+<li>ADT(&#x7F16;&#x7801;&#x4E3A; Scala &#x7684;&#x6837;&#x4F8B;&#x7C7B;&#x548C;&#x7279;&#x8D28;) &#x548C;&#x6CDB;&#x578B;&#x8868;&#x793A;&#x95F4;&#x7684;&#x81EA;&#x52A8;&#x6620;&#x5C04;&#x3002;</li>
+</ul>
+<p>&#x672C;&#x7AE0;&#x5F00;&#x59CB;&#x6211;&#x4EEC;&#x5C06;&#x4F1A;&#x7B80;&#x5355;&#x56DE;&#x987E; ADT &#x7684;&#x57FA;&#x672C;&#x7406;&#x8BBA;&#xFF0C;&#x4EE5;&#x53CA;&#x4E3A;&#x4EC0;&#x4E48; Scala &#x5F00;&#x53D1;&#x8005;&#x9700;&#x8981;&#x719F;&#x6089;&#x4ED6;&#x4EEC;&#x3002;&#x7136;&#x540E;&#x5C06;&#x4ECB;&#x7ECD; shapeless &#x4F7F;&#x7528;&#x7684;&#x6CDB;&#x578B;&#x8868;&#x793A;&#x5E76;&#x8BA8;&#x8BBA;&#x5B83;&#x4EEC;&#x5982;&#x4F55;&#x6620;&#x5C04;&#x5230;&#x5177;&#x4F53;&#x7684; ADT&#x3002;&#x6700;&#x7EC8;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4F1A;&#x4ECB;&#x7ECD;&#x4E00;&#x4E2A;&#x540D;&#x4E3A; Generic &#x7684;&#x7C7B;&#x578B;&#x7C7B;&#x6765;&#x5C06;&#x4E00;&#x4E2A;&#x503C;&#x7684;&#x7C7B;&#x578B;&#x8FDB;&#x884C;&#x8F6C;&#x6362;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="2-1.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 简单回顾：代数数据类型">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ADT 与泛型表示","level":"1.3.1","depth":2,"next":{"title":"简单回顾：代数数据类型","level":"1.3.1.1","depth":3,"path":"doc/chapter-2/2-1.md","ref":"doc/chapter-2/2-1.md","articles":[]},"previous":{"title":"类型类推断","level":"1.3","depth":1,"ref":"","articles":[{"title":"ADT 与泛型表示","level":"1.3.1","depth":2,"path":"doc/chapter-2/2-0.md","ref":"doc/chapter-2/2-0.md","articles":[{"title":"简单回顾：代数数据类型","level":"1.3.1.1","depth":3,"path":"doc/chapter-2/2-1.md","ref":"doc/chapter-2/2-1.md","articles":[]}]}]},"dir":"ltr"},"config":{"plugins":["-sharing","editlink","git-author","expandable-chapters","hypercomments-temp","anchorjs","prism","-highlight","new-flowchart"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"hypercomments-temp":{"wid":89030,"lang":"ch"},"prism":{"lang":{"bas":"bash","shell":"bash","objc":"objectivec","objective-c":"objectivec"}},"new-flowchart":{},"editlink":{"label":"编辑此页","multilingual":false,"base":"http://git.caimi-inc.com/starwars/document/edit/master/"},"git-author":{"modifyTpl":"最后修改: {user} {timeStamp}","createTpl":"创建: {user} {timeStamp}","timeStampFormat":"YYYY/MM/DD HH:mm"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"anchorjs":{"placement":"left"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"gitbook for force 2.0","gitbook":"*"},"file":{"path":"doc/chapter-2/2-0.md","mtime":"2017-07-21T15:12:34.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T03:59:35.587Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-editlink/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hypercomments-temp/hc.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/3.1.1/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-anchorjs/anchor-style.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-new-flowchart/raphael-min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-new-flowchart/flowchart-1.6.2.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-new-flowchart/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+
+    </body>
+</html>
+
