@@ -1,0 +1,44 @@
+{
+  "title": "gitbook for force 2.0",
+  "plugins": [
+    "-sharing",
+    "editlink",
+    "git-author",
+    "expandable-chapters",
+    "hypercomments-temp",
+    "anchorjs",
+    "prism",
+    "-highlight",
+    "new-flowchart"
+  ],
+  "pluginsConfig": {
+    "theme-default": {
+      "showLevel": true
+    },
+    "hypercomments-temp": {
+      "wid": 89030,
+      "lang": "ch"
+    },
+    "anchorjs": {
+      "placement": "left"
+    },
+    "prism": {
+      "lang": {
+        "bas": "bash",
+        "shell": "bash",
+        "objc": "objectivec",
+        "objective-c": "objectivec"
+      }
+    },
+    "editlink": {
+      "label": "编辑此页",
+      "base": "http://git.caimi-inc.com/starwars/document/edit/master/"
+    },
+    "git-author": {
+      "modifyTpl": "最后修改: {user} {timeStamp}",
+      "createTpl": "创建: {user} {timeStamp}",
+      "timeStampFormat": "YYYY/MM/DD HH:mm"
+    }
+  }
+}
+
